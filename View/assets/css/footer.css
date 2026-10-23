@@ -1,0 +1,123 @@
+
+/* ==========================================================================
+   RODAPÉ - AGENDA CULTURAL
+   ========================================================================== */
+
+.footer {
+    width: 100%;
+    margin-top: auto;
+
+    color: var(--color-text-inverse);
+    background-color: var(--color-primary);
+}
+
+/* Organização do conteúdo */
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-5);
+
+    padding: var(--spacing-5) 3%;
+}
+
+/* Marca do rodapé */
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+
+    color: var(--color-text-inverse);
+    text-decoration: none;
+}
+
+/* Símbolo da marca */
+.footer-logo-icon {
+    width: 2rem;
+    height: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: var(--color-text-inverse);
+    background-color: var(--status-approved);
+    border-radius: var(--radius-small);
+
+    font-size: var(--font-large);
+}
+
+/* Textos da marca */
+.footer-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+}
+
+.footer-brand-text strong {
+    font-size: var(--font-small);
+    font-weight: var(--font-weight-bold);
+}
+
+.footer-brand-text small {
+    color: var(--color-text-inverse);
+    opacity: 0.8;
+    font-size: var(--font-extra-small);
+}
+
+/* Links de navegação */
+.footer-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-4);
+}
+
+.footer-menu a {
+    color: var(--color-text-inverse);
+    font-size: var(--font-extra-small);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.footer-menu a:hover {
+    color: var(--color-tertiary);
+}
+
+/* Créditos acadêmicos */
+.footer-credits p {
+    margin: 0;
+
+    color: var(--color-text-inverse);
+    opacity: 0.8;
+    font-size: var(--font-extra-small);
+    text-align: right;
+}
+
+/* Responsividade para tablets */
+@media (max-width: 55rem) {
+    .footer-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-credits p {
+        text-align: center;
+    }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 35rem) {
+    .footer-container {
+        flex-direction: column;
+        gap: var(--spacing-4);
+    }
+
+    .footer-menu {
+        flex-wrap: wrap;
+        gap: var(--spacing-3);
+    }
+}
