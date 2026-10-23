@@ -1,0 +1,170 @@
+
+/* ==========================================================================
+   CABEÇALHO - AGENDA CULTURAL
+   ========================================================================== */
+
+.header {
+    width: 100%;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Organização dos elementos */
+.header-container {
+    width: 100%;
+    min-height: 4rem;
+    padding: var(--spacing-3) 3%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-5);
+}
+
+/* Identidade visual */
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+
+    color: var(--color-primary);
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+/* Símbolo da marca */
+.logo-icon {
+    width: 2rem;
+    height: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: var(--color-text-inverse);
+    background-color: var(--status-approved);
+    border-radius: var(--radius-small);
+
+    font-size: var(--font-large);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Nome e localização */
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.logo-text strong {
+    color: var(--color-primary);
+    font-size: var(--font-small);
+    font-weight: var(--font-weight-bold);
+}
+
+.logo-text small {
+    color: var(--color-text-secondary);
+    font-size: var(--font-extra-small);
+    line-height: 1.2;
+}
+
+/* Menu de navegação */
+.header-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-5);
+}
+
+.header-menu a {
+    color: var(--color-text-primary);
+    font-size: var(--font-small);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.header-menu a:hover {
+    color: var(--color-secondary);
+}
+
+/* Ações do cabeçalho */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+/* Botão de pesquisa */
+.header-search {
+    width: 2.5rem;
+    height: 2.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--color-primary);
+    border-radius: var(--radius-medium);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.header-search svg {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.header-search:hover {
+    background-color: var(--color-tertiary);
+}
+
+/* Botão Entrar */
+.header-login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--spacing-2) var(--spacing-4);
+
+    color: var(--button-text);
+    background-color: var(--button-primary-bg);
+    border-radius: var(--button-radius);
+
+    font-size: var(--font-small);
+    font-weight: var(--button-font-weight);
+    text-decoration: none;
+
+    transition: var(--button-transition);
+}
+
+.header-login:hover {
+    background-color: var(--button-primary-hover);
+}
+
+/* Responsividade para tablets */
+@media (max-width: 55rem) {
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-4);
+    }
+
+    .header-menu {
+        flex-wrap: wrap;
+        gap: var(--spacing-4);
+    }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 35rem) {
+    .header-container {
+        flex-direction: column;
+    }
+
+    .header-menu {
+        justify-content: center;
+        gap: var(--spacing-3);
+    }
+}
