@@ -1,0 +1,232 @@
+/* aqui por o css da tela de login */
+/* Reseta as margens e define o modelo de caixa padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Container principal com layout Flexbox ocupando 100% da altura do ecrã */
+.container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+/* COLUNA ESQUERDA (Banner Verde) */
+.coluna-esquerda {
+    width: 45%;
+    background-color: #385a4e; /* Verde escuro do fundo */
+    color: #ffffff;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo img {
+    height: 30px;
+}
+
+.texto-destaque {
+    margin-bottom: 2rem;
+}
+
+.texto-destaque h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.texto-destaque p {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+}
+
+/* COLUNA DIREITA (Formulário) */
+.coluna-direita {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.formulario-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.saudacao {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #1e7d69; /* Verde claro da marca */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.formulario-container h2 {
+    font-size: 2.2rem;
+    color: #112d26;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.formulario-container > p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+/* Estilização dos Inputs e Labels */
+.grupo-input {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-input label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.grupo-input input {
+    padding: 0.8rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.grupo-input input:focus {
+    border-color: #1e7d69;
+}
+
+/* Opções extra: Checkbox e Link */
+.opcoes-extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.opcoes-extras label {
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.opcoes-extras a {
+    color: #1e7d69;
+    text-decoration: none;
+}
+
+.opcoes-extras a:hover {
+    text-decoration: underline;
+}
+
+/* Botões */
+.btn-entrar {
+    width: 100%;
+    background-color: #1e7d69;
+    color: #ffffff;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-entrar:hover {
+    background-color: #156252;
+}
+
+.btn-criar-conta {
+    width: 100%;
+    background-color: transparent;
+    color: #1e7d69;
+    border: 1px solid #e5e7eb;
+    padding: 0.9rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-criar-conta:hover {
+    background-color: #f9fafb;
+}
+
+/* Divisor "ou" com linhas laterais */
+.divisor {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin: 1.5rem 0;
+}
+
+.divisor::before,
+.divisor::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.divisor::before {
+    margin-right: 1rem;
+}
+
+.divisor::after {
+    margin-left: 1rem;
+}
+
+/* Rodapé do visitante */
+.rodape-visitante {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* Estilo para a mensagem de erro do PHP */
+.alerta-erro {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Responsividade para ecrãs menores */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .coluna-esquerda, .coluna-direita {
+        width: 100%;
+    }
+    .coluna-esquerda {
+        padding: 2rem;
+    }
+    .texto-destaque h1 {
+        font-size: 2.5rem;
+    }
+}
