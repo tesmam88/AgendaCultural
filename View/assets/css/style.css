@@ -153,3 +153,9 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary:hover {
   background-color: var(--button-primary-hover);
 }
+
+.logo-padrao {
+    width: 180px; /* Substitua pelo valor exato em pixels do seu Figma */
+    height: auto;
+    object-fit: contain;
+}
