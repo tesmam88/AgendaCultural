@@ -10,7 +10,7 @@
   --color-tertiary:             #E8F3F1; /* Fundo esverdeado claro (Cabeçalho de seções públicas) */
   --color-background:           #F8F9FA; /* Fundo cinza muito claro geral das telas */
   --color-surface:              #FFFFFF; /* Fundo de cards, inputs e modais */
-  
+  --color-gradient:             linear-gradient(180deg, #528578 0%, var(--color-primary) 100%);
   /* Cores de Borda e Texto */
   --color-border:               #E2E8F0;
   --color-text-primary:         #1E293B; /* Texto principal (Títulos, textos escuros) */
