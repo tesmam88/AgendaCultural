@@ -24,7 +24,7 @@
     <!-- Painel esquerdo: capa -->
     <section class="auth__cover" aria-hidden="false">
       <div class="brand">
-        <img class="brand__logo" src="../assets/img/logo_adendacult.png" alt="Logo Agenda Cultural">
+        <img class="brand__logo" src="../assets/img/logo_alone.png" alt="Logo Agenda Cultural" class= "logo-padrao";>
         <div class="brand__text">
           <span class="brand__name">Agenda Cultural</span>
           <span class="brand__city">CAMPO GRANDE · MS</span>
