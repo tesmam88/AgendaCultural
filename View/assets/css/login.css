@@ -17,7 +17,7 @@
 /* COLUNA ESQUERDA (Banner Verde) */
 .coluna-esquerda {
     width: 45%;
-    background-color: #385a4e; /* Verde escuro do fundo */
+    background: var(--color-gradient); /* Gradiente aplicado aqui */
     color: #ffffff;
     padding: 3rem;
     display: flex;
@@ -133,10 +133,9 @@
     text-decoration: underline;
 }
 
-/* Botões */
 .btn-entrar {
     width: 100%;
-    background-color: #1e7d69;
+    background-color: var(--color-primary); /* Usando a variável */
     color: #ffffff;
     border: none;
     padding: 0.9rem;

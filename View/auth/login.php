@@ -1,6 +1,5 @@
-<!-- fazer aqui o html do login -->
- <!DOCTYE html>
- <html lang="pt-BR">
+<!DOCTYE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +18,10 @@
             </div>
         </div>
         <div class="coluna-direita">
-<div class="formulario-container">
-                <span class="saudacao">BEM-VINDO DE VOLTA</span>
+            <div class="formulario-container">
+                <span class="saudacao">
+                    BEM-VINDO DE VOLTA
+                </span>
                 <h2>Acesse sua conta</h2>
                 <p>Entre com seus dados para continuar.</p>
 
@@ -60,8 +61,6 @@
         </div>
 
     </div>
-
-        
 
 </body>
 </html>
