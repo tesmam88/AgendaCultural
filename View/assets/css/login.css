@@ -229,3 +229,9 @@
         font-size: 2.5rem;
     }
 }
+
+.logo-padrao {
+    width: 480px;
+    height: auto;
+    object-fit: contain;
+}

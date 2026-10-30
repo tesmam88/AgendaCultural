@@ -10,7 +10,7 @@
     <div class="container">
         <div class="coluna-esquerda">
             <div class="logo">
-
+                <img class= "logo-padrao" src="../assets/img/logo_adendacult.png" alt="Logo Agenda Cultural";>
             </div>
             <div class="texto-destaque">
                 <h1>A cidade acontece.<br>Viva cada momento.</h1>
