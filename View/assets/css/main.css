@@ -1,4 +1,24 @@
+/* ==========================================================================
+   ESTRUTURA GERAL DA PÁGINA
+   Mantém o footer na parte inferior da tela
+   ========================================================================== */
 
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Conteúdo principal ocupa o espaço disponível */
+main {
+    flex: 1;
+}
 /* ==========================================================================
    CADASTRO - Estilos exclusivos da tela "Crie sua conta" (feat05)
    Depende das variáveis definidas em style.css
@@ -669,3 +689,1089 @@
 
 }
 
+
+/* ==========================================================================
+   EVENTOS - AGENDA CULTURAL DE CAMPO GRANDE
+   ========================================================================== */
+
+/* Estrutura principal */
+
+.eventos-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+}
+
+/* ==========================================================================
+   BANNER
+   ========================================================================== */
+
+.eventos-banner {
+    width: 100%;
+    min-height: 16rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(
+        110deg,
+        #E3F2EE,
+        #F4F8F6
+    );
+}
+
+.eventos-banner > span {
+    margin-bottom: 0.8rem;
+    color: var(--color-secondary);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+}
+
+.eventos-banner h1 {
+    margin: 0;
+    color: #193D3D;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+}
+
+.eventos-banner p {
+    margin: 0.5rem 0 0;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   CONTEÚDO DOS EVENTOS
+   ========================================================================== */
+
+.eventos-container {
+    width: 88%;
+    max-width: 78rem;
+    margin: 0 auto;
+    padding: 3rem 0;
+}
+
+/* ==========================================================================
+   FILTROS
+   ========================================================================== */
+
+.eventos-filtros {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr 1.05fr 1.05fr auto auto;
+    align-items: end;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.8rem;
+    background-color: var(--color-surface);
+}
+
+.filtro-campo {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.filtro-campo label {
+    color: var(--color-text-secondary);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.filtro-campo input,
+.filtro-campo select {
+    width: 100%;
+    height: 2.7rem;
+    padding: 0 0.75rem;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.4rem;
+    outline: none;
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    font-family: inherit;
+    font-size: 0.72rem;
+}
+
+.filtro-campo input:focus,
+.filtro-campo select:focus {
+    border-color: var(--color-secondary);
+}
+
+/* Botões dos filtros */
+
+.btn-filtrar,
+.btn-limpar {
+    height: 2.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    border-radius: 0.4rem;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-filtrar {
+    border: 0.06rem solid var(--color-secondary);
+    background-color: var(--color-secondary);
+    color: var(--color-surface);
+}
+
+.btn-filtrar:hover {
+    background-color: var(--color-primary);
+}
+
+.btn-limpar {
+    border: 0.06rem solid var(--color-border);
+    background-color: var(--color-surface);
+    color: var(--color-secondary);
+}
+
+.btn-limpar:hover {
+    background-color: var(--color-tertiary);
+}
+
+/* ==========================================================================
+   RESULTADOS
+   ========================================================================== */
+
+.eventos-resultado {
+    margin: 1.5rem 0 0.8rem;
+}
+
+.eventos-resultado p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.78rem;
+}
+
+/* ==========================================================================
+   GRID DE EVENTOS
+   ========================================================================== */
+
+.eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.evento-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.8rem;
+    background-color: var(--color-surface);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.evento-card:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.evento-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Área reservada para imagem */
+
+.evento-imagem {
+    position: relative;
+    width: 100%;
+    height: 10rem;
+    background-color: #5D9087;
+}
+
+.evento-categoria {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 2rem;
+    background-color: #E8F3F1;
+    color: var(--color-secondary);
+    font-size: 0.62rem;
+    font-weight: 700;
+}
+
+/* Informações */
+
+.evento-informacoes {
+    padding: 0.85rem;
+}
+
+.evento-informacoes h2 {
+    margin: 0 0 0.55rem;
+    color: var(--color-text-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.evento-informacoes p {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    margin: 0 0 0.35rem;
+    color: var(--color-text-secondary);
+    font-size: 0.68rem;
+    line-height: 1.4;
+}
+
+.evento-informacoes p span {
+    color: var(--color-secondary);
+}
+
+/* ==========================================================================
+   NENHUM EVENTO ENCONTRADO
+   ========================================================================== */
+
+.eventos-vazio {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+    text-align: center;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.8rem;
+    background-color: var(--color-surface);
+}
+
+.eventos-vazio > span {
+    color: var(--color-secondary);
+    font-size: 2.5rem;
+}
+
+.eventos-vazio h2 {
+    margin: 1rem 0 0.5rem;
+    color: var(--color-text-primary);
+    font-size: 1.2rem;
+}
+
+.eventos-vazio p {
+    max-width: 30rem;
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.eventos-vazio a {
+    margin-top: 0.7rem;
+    color: var(--color-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 64rem) {
+
+    .eventos-filtros {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .eventos-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 48rem) {
+
+    .eventos-banner {
+        min-height: 13rem;
+    }
+
+    .eventos-container {
+        width: 90%;
+        padding: 2rem 0;
+    }
+
+    .eventos-filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .eventos-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 30rem) {
+
+    .eventos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .evento-imagem {
+        height: 11rem;
+    }
+
+    .eventos-banner h1 {
+        font-size: 2rem;
+    }
+
+}
+/* fim eventos.php */
+
+
+/* ==========================================================================
+   DETALHES DO EVENTO - AGENDA CULTURAL
+   ========================================================================== */
+
+/* ==========================================================================
+   ESTRUTURA PRINCIPAL
+   ========================================================================== */
+
+.detalhe-page {
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+}
+
+/* ==========================================================================
+   BANNER DO EVENTO
+   ========================================================================== */
+
+.detalhe-banner {
+    position: relative;
+    min-height: 14rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem 7%;
+    background: linear-gradient(
+        180deg,
+        #5D9087 35%,
+        #194A43 100%
+    );
+    color: var(--color-surface);
+}
+
+.detalhe-banner-content {
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+.detalhe-banner-categoria {
+    display: block;
+    margin-bottom: 0.6rem;
+    color: #E8F3F1;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.detalhe-banner h1 {
+    margin: 0;
+    color: var(--color-surface);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* ==========================================================================
+   CONTEÚDO
+   ========================================================================== */
+
+.detalhe-container {
+    width: 82%;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 1.2rem 0 3rem;
+}
+
+.detalhe-voltar {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--color-secondary);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.detalhe-voltar:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   LAYOUT DAS COLUNAS
+   ========================================================================== */
+
+.detalhe-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(15rem, 0.95fr);
+    align-items: start;
+    gap: 1rem;
+}
+
+.detalhe-conteudo,
+.detalhe-sidebar {
+    min-width: 0;
+}
+
+.detalhe-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+
+.detalhe-card {
+    padding: 1rem;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.8rem;
+    background-color: var(--color-surface);
+}
+
+.detalhe-card h2 {
+    margin: 0 0 0.5rem;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.detalhe-categoria {
+    display: inline-block;
+    margin-bottom: 0.9rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 2rem;
+    background-color: var(--color-tertiary);
+    color: var(--color-secondary);
+    font-size: 0.62rem;
+    font-weight: 700;
+}
+
+.detalhe-descricao {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   GALERIA DE IMAGENS
+   ========================================================================== */
+
+.detalhe-galeria {
+    margin-top: 1.2rem;
+}
+
+.detalhe-galeria h2 {
+    margin-bottom: 0.7rem;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.4rem;
+}
+
+.galeria-item {
+    min-width: 0;
+    height: 5.8rem;
+    border-radius: 0.5rem;
+    background-color: #5D9087;
+}
+
+/* ==========================================================================
+   CARD DE INGRESSOS
+   ========================================================================== */
+
+.detalhe-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-secondary);
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+
+.ingresso-card h2 {
+    margin-bottom: 0.5rem;
+}
+
+.ingresso-card p {
+    margin: 0 0 0.8rem;
+    color: var(--color-text-secondary);
+    font-size: 0.7rem;
+    line-height: 1.5;
+}
+
+.btn-ingresso {
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    background-color: var(--color-secondary);
+    color: var(--color-surface);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-ingresso:hover {
+    background-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   CARD QUANDO E ONDE
+   ========================================================================== */
+
+.local-card h2 {
+    margin-bottom: 0.8rem;
+}
+
+.detalhe-informacao {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+}
+
+.detalhe-icone {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+}
+
+.detalhe-informacao p {
+    margin: 0 0 0.2rem;
+    color: var(--color-text-secondary);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.detalhe-informacao small {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 0.65rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   MAPA ILUSTRATIVO
+   ========================================================================== */
+
+.detalhe-mapa {
+    min-height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-top: 0.4rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(
+        135deg,
+        #DDEFE9,
+        #F1F5E9
+    );
+    color: var(--color-secondary);
+}
+
+.detalhe-mapa span {
+    font-size: 1.2rem;
+}
+
+.detalhe-mapa p {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.mapa-legenda {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--color-text-secondary);
+    font-size: 0.6rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   EVENTO NÃO ENCONTRADO
+   ========================================================================== */
+
+.detalhe-nao-encontrado {
+    min-height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.detalhe-nao-encontrado h1 {
+    color: var(--color-text-primary);
+    font-size: 1.5rem;
+}
+
+.detalhe-nao-encontrado p {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+}
+
+.detalhe-nao-encontrado a {
+    margin-top: 0.8rem;
+    color: var(--color-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+
+    .detalhe-banner {
+        min-height: 12rem;
+        padding: 2rem 5%;
+    }
+
+    .detalhe-container {
+        width: 90%;
+    }
+
+    .detalhe-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .detalhe-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+    }
+
+}
+
+@media (max-width: 32rem) {
+
+    .detalhe-banner {
+        min-height: 10rem;
+    }
+
+    .detalhe-banner h1 {
+        font-size: 1.7rem;
+    }
+
+    .detalhe-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-item {
+        height: 9rem;
+    }
+
+}
+
+/* fim detalhe.php */
+
+
+/* ==========================================================================
+   CATEGORIAS - AGENDA CULTURAL DE CAMPO GRANDE
+   ========================================================================== */
+
+/* ==========================================================================
+   ESTRUTURA PRINCIPAL
+   ========================================================================== */
+
+.categorias-page {
+    width: 100%;
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+}
+
+/* ==========================================================================
+   BANNER
+   ========================================================================== */
+
+.categorias-banner {
+    width: 100%;
+    min-height: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(
+        110deg,
+        #E3F2EE,
+        #F4F8F6
+    );
+}
+
+.categorias-label {
+    margin-bottom: 0.65rem;
+    color: var(--color-secondary);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.03rem;
+}
+
+.categorias-banner h1 {
+    margin: 0;
+    color: #193D3D;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-weight: 700;
+}
+
+.categorias-banner p {
+    margin: 0.5rem 0 0;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   CONTAINER DAS CATEGORIAS
+   ========================================================================== */
+
+.categorias-container {
+    width: 86%;
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2.5rem 0 3rem;
+}
+
+/* ==========================================================================
+   GRID DE CATEGORIAS
+   ========================================================================== */
+
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+/* ==========================================================================
+   CARD DE CATEGORIA
+   ========================================================================== */
+
+.categoria-card {
+    min-width: 0;
+    min-height: 7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 0.5rem;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.65rem;
+    background-color: #EAF5F2;
+    text-align: center;
+    text-decoration: none;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.categoria-card:hover {
+    transform: translateY(-0.2rem);
+    background-color: #DDEFEA;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.06);
+}
+
+/* Ícone */
+
+.categoria-icone {
+    color: var(--color-secondary);
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+/* Nome */
+
+.categoria-card h2 {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+/* Descrição */
+
+.categoria-card p {
+    max-width: 9rem;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.58rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 64rem) {
+
+    .categorias-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.8rem;
+    }
+
+}
+
+@media (max-width: 48rem) {
+
+    .categorias-banner {
+        min-height: 11rem;
+    }
+
+    .categorias-container {
+        width: 90%;
+        padding: 2rem 0;
+    }
+
+    .categorias-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 30rem) {
+
+    .categorias-banner h1 {
+        font-size: 1.8rem;
+    }
+
+    .categorias-banner p {
+        max-width: 18rem;
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .categoria-card {
+        min-height: 7.5rem;
+    }
+
+}
+/* fim categoria.php */
+
+/* ==========================================================================
+   SOBRE - AGENDA CULTURAL DE CAMPO GRANDE
+   ========================================================================== */
+
+/* ==========================================================================
+   ESTRUTURA PRINCIPAL
+   ========================================================================== */
+
+.sobre-page {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+}
+
+/* ==========================================================================
+   BANNER PRINCIPAL
+   ========================================================================== */
+
+.sobre-banner {
+    width: 100%;
+    min-height: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(
+        110deg,
+        #E3F2EE,
+        #F4F8F6
+    );
+}
+
+.sobre-label {
+    display: block;
+    margin-bottom: 0.6rem;
+    color: var(--color-secondary);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.03rem;
+}
+
+.sobre-banner h1 {
+    margin: 0;
+    color: #193D3D;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-weight: 700;
+}
+
+.sobre-banner p {
+    margin: 0.5rem 0 0;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   CONTEÚDO SOBRE
+   ========================================================================== */
+
+.sobre-container {
+    width: 86%;
+    max-width: 72rem;
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(15rem, 1fr);
+    align-items: center;
+    gap: 3rem;
+    margin: 0 auto;
+    padding: 2.5rem 0;
+}
+
+/* ==========================================================================
+   TEXTO DE APRESENTAÇÃO
+   ========================================================================== */
+
+.sobre-conteudo {
+    min-width: 0;
+}
+
+.sobre-conteudo .sobre-label {
+    margin-bottom: 0.6rem;
+}
+
+.sobre-conteudo h2 {
+    margin: 0 0 0.7rem;
+    color: var(--color-text-primary);
+    font-size: 1.55rem;
+    font-weight: 600;
+}
+
+.sobre-conteudo p {
+    margin: 0 0 0.7rem;
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    line-height: 1.7;
+}
+
+/* Botão */
+
+.sobre-button {
+    min-height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    background-color: var(--color-secondary);
+    color: var(--color-surface);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.sobre-button:hover {
+    background-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   CARD DESTAQUE
+   ========================================================================== */
+
+.sobre-destaque {
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    background-color: #E5F2EE;
+}
+
+.sobre-destaque-item h3 {
+    margin: 0 0 0.3rem;
+    color: var(--color-text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.sobre-destaque-item p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+}
+
+.sobre-divisor {
+    width: 100%;
+    height: 0.06rem;
+    margin: 1.2rem 0;
+    background-color: #D3E5DF;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+
+    .sobre-banner {
+        min-height: 11rem;
+    }
+
+    .sobre-container {
+        width: 90%;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem 0;
+    }
+
+    .sobre-conteudo h2 {
+        font-size: 1.35rem;
+    }
+
+}
+
+@media (max-width: 30rem) {
+
+    .sobre-banner h1 {
+        font-size: 1.8rem;
+    }
+
+    .sobre-banner p {
+        max-width: 20rem;
+        line-height: 1.5;
+    }
+
+    .sobre-destaque {
+        padding: 1.2rem;
+    }
+
+}
