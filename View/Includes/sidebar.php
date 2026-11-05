@@ -18,8 +18,8 @@ $menus = [
     'organizador' => [
         'titulo' => 'Painel do organizador',
         'itens'  => [
-            ['chave' => 'meus-eventos',     'label' => 'Meus eventos',     'icone' => 'meus-eventos.svg',     'url' => '/organizador/eventos.php'],
-            ['chave' => 'cadastrar-evento', 'label' => 'Cadastrar evento', 'icone' => 'cadastrar-evento.svg', 'url' => '/organizador/cadastrar.php'],
+            ['chave' => 'meus-eventos',     'label' => 'Meus eventos',     'icone' => 'meus-eventos.svg',     'url' => '/organizador/dashboard.php'],
+            ['chave' => 'cadastrar-evento', 'label' => 'Cadastrar evento', 'icone' => 'cadastrar-evento.svg', 'url' => '/organizador/form_evento.php'],
             ['chave' => 'meu-perfil',       'label' => 'Meu perfil',       'icone' => 'meu-perfil.svg',       'url' => '/organizador/perfil.php'],
         ],
     ],

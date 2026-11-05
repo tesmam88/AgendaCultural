@@ -2126,3 +2126,84 @@ main {
   .evento-item { flex-wrap: wrap; }
   .evento-item__acoes { width: 100%; }
 }
+
+/* ==========================================================================
+   ÁREA DO ORGANIZADOR
+   ========================================================================== */
+
+/* Aviso informativo */
+.aviso-box {
+  margin-top: var(--spacing-4);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-large);
+  background: var(--color-tertiary);
+}
+
+.aviso-box__titulo {
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-bold);
+}
+
+.aviso-box__texto {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+/* Formulário em duas colunas */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 var(--spacing-4);
+}
+
+.form-campo--full {
+  grid-column: 1 / -1;
+}
+
+.form-campo select,
+.form-campo textarea {
+  padding: 0 var(--spacing-3);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--input-background);
+  font-family: var(--font-body);
+  font-size: var(--font-small);
+}
+
+.form-campo select {
+  height: 40px;
+}
+
+.form-campo textarea {
+  min-height: 100px;
+  padding: var(--spacing-3);
+  resize: vertical;
+}
+
+.form-campo select:focus,
+.form-campo textarea:focus {
+  outline: none;
+  border: var(--input-border-focus);
+}
+
+.form-campo input:disabled {
+  background: var(--color-background);
+  cursor: not-allowed;
+}
+
+.form-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-5);
+}
+
+.form-rodape small {
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 700px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
