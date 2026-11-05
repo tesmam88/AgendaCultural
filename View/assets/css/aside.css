@@ -1,0 +1,142 @@
+/* ==========================================================================
+   SIDEBAR (admin, organizador, curador)
+   ========================================================================== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-5) var(--spacing-4);
+  background: var(--sidebar-background);
+  color: var(--sidebar-text);
+  font-family: var(--font-body);
+  z-index: 100;
+}
+
+/* Marca */
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: 0 var(--spacing-2) var(--spacing-5);
+}
+
+.sidebar__logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.sidebar__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.sidebar__brand-text strong {
+  font-family: var(--font-heading);
+  font-size: var(--font-medium);
+  font-weight: var(--font-weight-semibold);
+}
+
+.sidebar__brand-text span {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+/* Navegação */
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  flex: 1;
+}
+
+.sidebar__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--sidebar-padding);
+  border-radius: var(--sidebar-radius);
+  color: var(--sidebar-text);
+  text-decoration: none;
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-medium);
+  opacity: 0.85;
+  overflow: hidden;
+  transition: background-color var(--transition-default),
+              opacity var(--transition-default),
+              transform var(--transition-default);
+}
+
+.sidebar__item:hover {
+  background: var(--sidebar-item-hover);
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.sidebar__item.is-active {
+  background: var(--sidebar-item-active);
+  font-weight: var(--font-weight-bold);
+  opacity: 1;
+}
+
+/* Ícone (SVG colorido pelo currentColor via mask) */
+.sidebar__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  background: var(--icon) center / contain no-repeat;
+  transition: transform var(--transition-default);
+}
+
+.sidebar__item:hover .sidebar__icon {
+  transform: scale(1.15);
+}
+
+/* Rodapé */
+.sidebar__footer {
+  padding-top: var(--spacing-4);
+}
+
+/* Animação de entrada suave (itens aparecem em cascata) */
+.sidebar__brand,
+.sidebar__nav .sidebar__item,
+.sidebar__footer {
+  opacity: 0;
+  transform: translateX(-16px);
+}
+
+.sidebar.is-ready .sidebar__brand,
+.sidebar.is-ready .sidebar__nav .sidebar__item,
+.sidebar.is-ready .sidebar__footer {
+  opacity: 0.85;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+
+.sidebar.is-ready .sidebar__brand,
+.sidebar.is-ready .sidebar__item.is-active {
+  opacity: 1;
+}
+
+/* Quem respeita "reduzir movimento" não vê animação */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar *,
+  .sidebar { transition: none !important; }
+  .sidebar__brand,
+  .sidebar__nav .sidebar__item,
+  .sidebar__footer { opacity: 1; transform: none; }
+}
+
+/* Espaço para o conteúdo da página não ficar embaixo do sidebar */
+.has-sidebar {
+  margin-left: var(--sidebar-width);
+}
