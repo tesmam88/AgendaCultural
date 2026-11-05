@@ -1775,3 +1775,241 @@ main {
     }
 
 }
+
+/* ==========================================================================
+   ÁREA ADMINISTRATIVA
+   ========================================================================== */
+.admin-main {
+  min-height: 100vh;
+  padding: var(--spacing-6) var(--spacing-7);
+}
+
+/* Topo da página */
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-5);
+}
+
+.admin-eyebrow {
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.admin-title {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-extra-large);
+  color: var(--color-text-primary);
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1) var(--spacing-3);
+  border: var(--card-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-secondary);
+}
+
+.admin-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-circle);
+  background: var(--color-secondary);
+}
+
+/* Cards */
+.admin-card {
+  background: var(--card-background);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+  margin-bottom: var(--spacing-5);
+}
+
+.admin-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.admin-card__title {
+  font-size: var(--font-medium);
+  color: var(--color-text-primary);
+}
+
+.admin-card__subtitle {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+}
+
+/* Botões do admin (usam .btn-primary do style.css como base) */
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--button-radius);
+  font-size: var(--font-small);
+  font-weight: var(--button-font-weight);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.admin-btn--outline {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  border: var(--card-border);
+  cursor: pointer;
+  transition: var(--button-transition);
+}
+
+.admin-btn--outline:hover {
+  background: var(--table-row-hover);
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+}
+
+.admin-link {
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.admin-link:hover {
+  text-decoration: underline;
+}
+
+/* Cards de resumo */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-5);
+}
+
+.admin-stat {
+  padding: var(--spacing-4);
+  border: var(--card-border);
+  border-radius: var(--radius-large);
+  background: var(--color-surface);
+}
+
+.admin-stat__label {
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+.admin-stat__value {
+  margin: var(--spacing-1) 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-extra-large);
+  font-weight: var(--font-weight-bold);
+}
+
+.admin-stat__detail {
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+/* Tabelas */
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-small);
+}
+
+.admin-table th {
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--table-header-bg);
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-medium);
+  text-align: left;
+  color: var(--color-text-secondary);
+}
+
+.admin-table td {
+  padding: var(--spacing-3) var(--spacing-4);
+  border-bottom: var(--table-border);
+}
+
+.admin-table tbody tr:hover {
+  background: var(--table-row-hover);
+}
+
+.admin-table td:first-child {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Tags de status */
+.status-badge {
+  display: inline-block;
+  padding: 2px var(--spacing-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-medium);
+}
+
+.status-badge--approved { background: var(--status-approved-bg); color: #1E9E36; }
+.status-badge--pending  { background: var(--status-pending-bg);  color: #B7791F; }
+.status-badge--rejected { background: var(--status-rejected-bg); color: #C53030; }
+
+/* Busca */
+.admin-search {
+  width: 220px;
+  height: 36px;
+  padding: 0 var(--spacing-3);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--input-background);
+  font-size: var(--font-small);
+}
+
+.admin-search:focus {
+  outline: none;
+  border: var(--input-border-focus);
+}
+
+/* Grade de categorias */
+.admin-categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: var(--table-border);
+}
+
+.admin-categories__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4);
+  border-bottom: var(--table-border);
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (max-width: 900px) {
+  .admin-stats { grid-template-columns: repeat(2, 1fr); }
+  .admin-categories { grid-template-columns: 1fr; }
+}
