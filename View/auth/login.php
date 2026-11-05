@@ -41,7 +41,7 @@
                     </div>
                 <?php endif; ?>
 
-                <form action="login.php" method="POST">
+                <form action="../../Controller/LoginController.php" method="POST">
                     <div class="grupo-input">
                         <label for="login">E-mail ou CPF</label>
                         <input type="text" id="login" name="login" placeholder="Digite seu e-mail ou CPF" required>

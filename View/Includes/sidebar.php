@@ -56,7 +56,7 @@ $menu = $menus[$sidebarPerfil] ?? $menus['admin'];
     </nav>
 
     <div class="sidebar__footer">
-        <a href="<?= $base ?>/auth/logout.php" class="sidebar__item">
+        <a href="<?= $base ?>/../Controller/LogoutController.php" class="sidebar__item">
             <img class="sidebar__icon" src="<?= $base ?>/assets/img/icons/sair.svg" alt="">
             <span class="sidebar__label">Sair</span>
         </a>
