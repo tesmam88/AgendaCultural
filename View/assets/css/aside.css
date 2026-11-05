@@ -92,7 +92,7 @@
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-  background: var(--icon) center / contain no-repeat;
+  object-fit: contain;
   transition: transform var(--transition-default);
 }
 
