@@ -1,0 +1,81 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
+  background: color-mix(in srgb, var(--color-primary) 75%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-default), visibility var(--transition-default);
+}
+
+.modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: var(--card-padding);
+  border-radius: var(--card-radius);
+  background: var(--color-surface);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(12px) scale(0.98);
+  transition: transform var(--transition-default);
+}
+
+.modal.is-open .modal__box {
+  transform: translateY(0) scale(1);
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--spacing-3);
+  right: var(--spacing-4);
+  border: none;
+  background: none;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.modal__title {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-large);
+}
+
+.modal__label {
+  display: block;
+  margin: var(--spacing-4) 0 var(--spacing-1);
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-medium);
+}
+
+.modal__textarea {
+  width: 100%;
+  min-height: 90px;
+  padding: var(--spacing-3);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  font-family: var(--font-body);
+  font-size: var(--font-small);
+  resize: vertical;
+}
+
+.modal__textarea:focus {
+  outline: none;
+  border: var(--input-border-focus);
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-4);
+}

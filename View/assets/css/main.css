@@ -2013,3 +2013,116 @@ main {
   .admin-stats { grid-template-columns: repeat(2, 1fr); }
   .admin-categories { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================================
+   ÁREA DO CURADOR
+   ========================================================================== */
+.evento-lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.evento-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-3);
+  border: var(--card-border);
+  border-radius: var(--radius-large);
+  background: var(--color-surface);
+  transition: opacity var(--transition-default), transform var(--transition-default);
+}
+
+.evento-item.is-saindo {
+  opacity: 0;
+  transform: translateX(16px);
+}
+
+.evento-item__thumb {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  border-radius: var(--radius-medium);
+  background: var(--color-gradient);
+}
+
+.evento-item__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.evento-item__titulo {
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-bold);
+}
+
+.evento-item__meta {
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+.evento-item__motivo {
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+.evento-item__info .status-badge {
+  align-self: flex-start;
+}
+
+.evento-item__acoes {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+/* Perfil */
+.perfil-card {
+  max-width: 380px;
+}
+
+.perfil-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-3);
+  border-radius: var(--radius-circle);
+  background: var(--color-tertiary);
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.form-campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  margin-top: var(--spacing-4);
+}
+
+.form-campo label {
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-medium);
+}
+
+.form-campo input {
+  height: 40px;
+  padding: 0 var(--spacing-3);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--input-background);
+  font-size: var(--font-small);
+}
+
+.form-campo input:focus {
+  outline: none;
+  border: var(--input-border-focus);
+}
+
+@media (max-width: 700px) {
+  .evento-item { flex-wrap: wrap; }
+  .evento-item__acoes { width: 100%; }
+}
