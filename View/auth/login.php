@@ -15,7 +15,7 @@
         <!-- COLUNA ESQUERDA -->
         <div class="coluna-esquerda">
             <div class="logo">
-                <img class="logo-padrao" src="../assets/img/logo_alone.png" alt="Logo Agenda Cultural">
+                <img class="logo-padrao" src="../assets/img/icons/logo_alone.png" alt="Logo Agenda Cultural">
                 <div class="logo-texto">
                     <span class="logo-nome">Agenda Cultural</span>
                     <span class="logo-cidade">Campo Grande · MS</span>

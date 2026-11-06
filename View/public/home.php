@@ -287,7 +287,7 @@ $categorias = [
 
         </div>
 
-        <a href="../organizador/cadastro-evento.php" class="register-button">
+        <a href="../auth/login.php" class="register-button" class="register-button">
             Cadastrar evento
         </a>
 
