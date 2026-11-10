@@ -20,6 +20,9 @@ $curadores = [
 </head>
 <body>
     <?php include __DIR__ . '/../Includes/sidebar.php'; ?>
+    <?php include __DIR__ . '/../Includes/modal-editar-curador.php'; ?>
+    <?php include __DIR__ . '/../Includes/modal-novo-curador.php'; ?>
+</body>
 
     <main class="has-sidebar admin-main">
         <header class="admin-topbar">
@@ -36,7 +39,7 @@ $curadores = [
                     <h2 class="admin-card__title">Curadores</h2>
                     <p class="admin-card__subtitle">Gerencie cadastros e permissões dos curadores.</p>
                 </div>
-                <a href="#" class="btn-primary admin-btn">+ Novo curador</a>
+                <a href="#" class="btn-primary admin-btn" data-novo-curador>+ Novo curador</a>
             </div>
 
             <div class="admin-table-wrap">
