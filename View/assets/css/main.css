@@ -2207,3 +2207,128 @@ main {
 @media (max-width: 700px) {
   .form-grid { grid-template-columns: 1fr; }
 }
+
+/* editar curador */
+
+/* ===== Modal base ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
+  background: color-mix(in srgb, var(--color-primary) 75%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-default), visibility var(--transition-default);
+}
+
+.modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: var(--card-padding);
+  border-radius: var(--card-radius);
+  background: var(--color-surface);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(12px) scale(0.98);
+  transition: transform var(--transition-default);
+}
+
+.modal.is-open .modal__box {
+  transform: translateY(0) scale(1);
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--spacing-3);
+  right: var(--spacing-4);
+  border: none;
+  background: none;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.modal__title {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-large);
+}
+
+.modal__label {
+  display: block;
+  margin: var(--spacing-4) 0 var(--spacing-1);
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-medium);
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-4);
+}
+
+/* ===== Campos do modal editar ===== */
+.modal__input {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  font-family: var(--font-body);
+  font-size: var(--font-small);
+  background: var(--color-surface);
+}
+
+.modal__input:focus {
+  outline: none;
+  border: var(--input-border-focus);
+}
+
+.modal__select-wrap {
+  position: relative;
+}
+
+.modal__status-dot {
+  position: absolute;
+  top: 50%;
+  left: var(--spacing-3);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22a55b;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.modal__select-wrap[data-status="inativo"] .modal__status-dot {
+  background: var(--color-text-secondary);
+}
+
+.modal__select {
+  width: 100%;
+  padding: var(--spacing-3) 32px var(--spacing-3) calc(var(--spacing-3) + 20px);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  font-family: var(--font-body);
+  font-size: var(--font-small);
+  background-color: var(--color-surface);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-3) center;
+  appearance: none;
+  cursor: pointer;
+}
+
+.modal__select:focus {
+  outline: none;
+  border: var(--input-border-focus);
+}

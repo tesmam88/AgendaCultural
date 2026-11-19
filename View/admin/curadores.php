@@ -4,8 +4,8 @@ $sidebarPerfil = 'admin';
 $sidebarAtivo  = 'curadores';
 
 $curadores = [
-    ['Mariana Oliveira', 'mariana@agenda.com', 'Ativo'],
-    ['Rafael Souza',     'rafael@exemplo.com', 'Ativo'],
+    [1, 'Mariana Oliveira', 'mariana@agenda.com', 'Ativo'],
+    [2, 'Rafael Souza',     'rafael@exemplo.com', 'Ativo'],
 ];
 ?>
 <!DOCTYPE html>
@@ -20,6 +20,9 @@ $curadores = [
 </head>
 <body>
     <?php include __DIR__ . '/../Includes/sidebar.php'; ?>
+    <?php include __DIR__ . '/../Includes/modal-editar-curador.php'; ?>
+    <?php include __DIR__ . '/../Includes/modal-novo-curador.php'; ?>
+</body>
 
     <main class="has-sidebar admin-main">
         <header class="admin-topbar">
@@ -36,7 +39,7 @@ $curadores = [
                     <h2 class="admin-card__title">Curadores</h2>
                     <p class="admin-card__subtitle">Gerencie cadastros e permissões dos curadores.</p>
                 </div>
-                <a href="#" class="btn-primary admin-btn">+ Novo curador</a>
+                <a href="#" class="btn-primary admin-btn" data-novo-curador>+ Novo curador</a>
             </div>
 
             <div class="admin-table-wrap">
@@ -45,12 +48,18 @@ $curadores = [
                         <tr><th>Nome</th><th>E-mail</th><th>Status</th><th>Ação</th></tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($curadores as [$nome, $email, $status]): ?>
+                        <?php foreach ($curadores as [$id, $nome, $email, $status]): ?>
                             <tr>
                                 <td><?= htmlspecialchars($nome) ?></td>
                                 <td><?= htmlspecialchars($email) ?></td>
-                                <td><span class="status-badge status-badge--approved"><?= $status ?></span></td>
-                                <td><a href="#" class="admin-link">Editar</a></td>
+                                <td><span class="status-badge status-badge--approved"><?= htmlspecialchars($status) ?></span></td>
+                                <td>
+                                    <a href="#" class="admin-link"
+                                       data-editar-curador="<?= (int) $id ?>"
+                                       data-nome="<?= htmlspecialchars($nome) ?>"
+                                       data-email="<?= htmlspecialchars($email) ?>"
+                                       data-status="<?= strtolower($status) === 'ativo' ? 'ativo' : 'inativo' ?>">Editar</a>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -58,5 +67,7 @@ $curadores = [
             </div>
         </section>
     </main>
+
+    <?php include __DIR__ . '/../Includes/modal-editar-curador.php'; ?>
 </body>
 </html>
