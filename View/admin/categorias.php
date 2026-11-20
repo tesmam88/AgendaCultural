@@ -14,6 +14,7 @@ $categorias = ['Shows', 'Festivais', 'Feiras', 'Gastronomia', 'Exposições', 'C
     <link rel="stylesheet" href="<?= $base ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?= $base ?>/assets/css/aside.css">
     <link rel="stylesheet" href="<?= $base ?>/assets/css/main.css">
+    <link rel="stylesheet" href="<?= $base ?>/assets/css/modal.css">
 </head>
 <body>
     <?php include __DIR__ . '/../Includes/sidebar.php'; ?>
@@ -33,18 +34,45 @@ $categorias = ['Shows', 'Festivais', 'Feiras', 'Gastronomia', 'Exposições', 'C
                     <h2 class="admin-card__title">Categorias de eventos</h2>
                     <p class="admin-card__subtitle">Organize os eventos em categorias claras.</p>
                 </div>
-                <a href="#" class="btn-primary admin-btn">+ Nova categoria</a>
+
+                <!-- Abre o modal de gerenciamento -->
+                <button
+                    type="button"
+                    class="btn-primary admin-btn"
+                    data-gerenciar-categorias
+                >
+                    Gerenciar categorias
+                </button>
             </div>
 
             <div class="admin-categories">
                 <?php foreach ($categorias as $categoria): ?>
                     <div class="admin-categories__item">
-                        <span><?= htmlspecialchars($categoria) ?></span>
-                        <a href="#" class="admin-link">Editar</a>
+                        <span><?= htmlspecialchars($categoria,ENT_QUOTES,'UTF-8') ?></span>
+                        
                     </div>
                 <?php endforeach; ?>
             </div>
         </section>
     </main>
+    <!-- Modal: Gerenciar categorias -->
+    <?php
+    include __DIR__ .
+        '/../Includes/modal-gerenciar-categorias.php';
+    include __DIR__ . 
+        '/../Includes/modal-excluir-categoria.php';
+?>    
+    ?>
+
+    <!-- Scripts específicos dos modais -->
+    <script
+        src="<?= $base ?>/assets/js/modal-gerenciar-categorias.js"
+        defer>
+    </script>
+
+    <script
+        src="<?= $base ?>/assets/js/modal-excluir-categoria.js"
+        defer>
+    </script>
 </body>
 </html>
