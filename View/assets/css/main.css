@@ -1,0 +1,2334 @@
+/* ==========================================================================
+   ESTRUTURA GERAL DA PÁGINA
+   Mantém o footer na parte inferior da tela
+   ========================================================================== */
+
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Conteúdo principal ocupa o espaço disponível */
+main {
+    flex: 1;
+}
+/* ==========================================================================
+   CADASTRO - Estilos exclusivos da tela "Crie sua conta" (feat05)
+   Depende das variáveis definidas em style.css
+   ========================================================================== */
+
+.auth {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  min-height: 100vh;
+  background-color: var(--color-surface);
+}
+
+/* ---------- Painel esquerdo (capa) ---------- */
+.auth__cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--spacing-6);
+  color: var(--color-text-inverse);
+  background: linear-gradient(180deg, #5A8A7E 0%, #3A6E62 40%, var(--color-primary) 100%);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.brand__logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: var(--radius-medium);
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand__name {
+  font-family: var(--font-heading);
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.brand__city {
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+.cover__content {
+  max-width: 520px;
+  padding-bottom: var(--spacing-5);
+}
+
+.cover__title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.15;
+  margin-bottom: var(--spacing-4);
+}
+
+.cover__subtitle {
+  font-size: var(--font-small);
+  opacity: 0.85;
+}
+
+/* ---------- Painel direito (formulário) ---------- */
+.auth__form-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-6) var(--spacing-5);
+  background-color: var(--color-surface);
+  overflow-y: auto;
+}
+
+.auth__form-box {
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth__eyebrow {
+  display: block;
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-2);
+}
+
+.auth__title {
+  font-size: 32px;
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-2);
+}
+
+.auth__subtitle {
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-6);
+}
+
+/* ---------- Formulário ---------- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.form__label {
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+.form__input {
+  width: 100%;
+  height: var(--input-height);
+  padding: var(--input-padding);
+  font-family: var(--font-body);
+  font-size: var(--font-small);
+  color: var(--color-text-primary);
+  background-color: var(--input-background);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form__input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.form__input:focus {
+  border: var(--input-border-focus);
+  box-shadow: 0 0 0 3px rgba(34, 138, 116, 0.15);
+}
+
+.form__input.is-invalid {
+  border-color: var(--alert-error);
+}
+
+.form__input.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.form__error {
+  min-height: 0;
+  font-size: var(--font-extra-small);
+  color: var(--alert-error);
+}
+
+.form__error:empty {
+  display: none;
+}
+
+/* Select customizado */
+.form__select-wrapper {
+  position: relative;
+}
+
+.form__select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+  color: var(--color-text-primary);
+}
+
+.form__select:invalid {
+  color: var(--input-placeholder);
+}
+
+.form__select-icon {
+  position: absolute;
+  top: 50%;
+  right: var(--spacing-4);
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+/* Botão e rodapé */
+.form__submit {
+  width: 100%;
+  height: var(--input-height);
+  margin-top: var(--spacing-2);
+  font-family: var(--font-body);
+  font-size: var(--font-small);
+}
+
+.form__footer {
+  text-align: center;
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+.form__footer a {
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+
+.form__footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+  .auth {
+    grid-template-columns: 1fr;
+  }
+
+  .auth__cover {
+    min-height: 220px;
+    padding: var(--spacing-5);
+  }
+
+  .cover__content {
+    padding-bottom: 0;
+  }
+
+  .cover__title {
+    font-size: 28px;
+    margin-bottom: var(--spacing-2);
+  }
+}
+
+
+/* ==========================================================================
+   HOME - AGENDA CULTURAL DE CAMPO GRANDE
+   ========================================================================== */
+
+/* ==========================================================================
+   ESTRUTURA GERAL
+   ========================================================================== */
+
+.home {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+    padding-bottom: var(--spacing-8);
+    background-color: var(--color-background);
+}
+
+/* ==========================================================================
+   BANNER PRINCIPAL
+   ========================================================================== */
+
+.home-banner {
+    min-height: 23rem;
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-10) 12%;
+    background: linear-gradient(
+        110deg,
+        var(--color-primary),
+        #477F75
+    );
+    color: var(--color-surface);
+}
+
+.home-banner-content {
+    width: 100%;
+    max-width: 65rem;
+    margin: 0 auto;
+}
+
+.home-label {
+    display: block;
+    margin-bottom: var(--spacing-2);
+    color: var(--color-secondary);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+}
+
+.home-banner .home-label {
+    color: var(--color-tertiary);
+}
+
+.home-banner h1 {
+    margin: 0 0 var(--spacing-2);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.12;
+}
+
+.home-banner p {
+    margin-bottom: var(--spacing-5);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* Pesquisa do banner */
+
+.home-search {
+    width: 100%;
+    max-width: 55rem;
+    min-height: 3.3rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: 0.35rem;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-medium);
+}
+
+.home-search input,
+.home-search select {
+    min-width: 0;
+    height: 2.5rem;
+    flex: 1;
+    padding: 0 var(--spacing-3);
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--color-text-primary);
+    font-family: inherit;
+    font-size: 0.7rem;
+}
+
+.home-search input::placeholder {
+    color: var(--color-text-secondary);
+}
+
+.home-search select {
+    cursor: pointer;
+}
+
+.home-search button {
+    min-width: 5rem;
+    height: 2.5rem;
+    padding: 0 var(--spacing-4);
+    border: none;
+    border-radius: var(--radius-small);
+    background-color: var(--color-secondary);
+    color: var(--color-surface);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.home-search button:hover {
+    background-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   SEÇÕES DA HOME
+   ========================================================================== */
+
+.home-section {
+    width: 88%;
+    max-width: 78rem;
+    margin: 0 auto;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+}
+
+.section-heading h2 {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 1.45rem;
+    font-weight: 600;
+}
+
+.section-heading .home-label {
+    margin-bottom: var(--spacing-1);
+    font-size: 0.55rem;
+}
+
+.section-link {
+    color: var(--color-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.section-link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   CARDS DE EVENTOS
+   ========================================================================== */
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-3);
+}
+
+.event-card {
+    min-width: 0;
+    overflow: hidden;
+    background-color: var(--color-surface);
+    border: 0.06rem solid var(--color-border);
+    border-radius: var(--radius-medium);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.event-image {
+    position: relative;
+    height: 8.5rem;
+    background: linear-gradient(
+        135deg,
+        #477F75,
+        #63978D
+    );
+}
+
+.event-category {
+    position: absolute;
+    top: var(--spacing-2);
+    left: var(--spacing-2);
+    padding: 0.25rem 0.55rem;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-large);
+    color: var(--color-secondary);
+    font-size: 0.55rem;
+    font-weight: 600;
+}
+
+.event-info {
+    padding: var(--spacing-3);
+}
+
+.event-info h3 {
+    margin: 0 0 var(--spacing-2);
+    color: var(--color-text-primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.event-info p {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+    margin: 0 0 var(--spacing-1);
+    color: var(--color-text-secondary);
+    font-size: 0.62rem;
+    line-height: 1.4;
+}
+
+.event-info p span {
+    color: var(--color-secondary);
+}
+
+/* ==========================================================================
+   CATEGORIAS
+   ========================================================================== */
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--spacing-2);
+}
+
+.category-card {
+    min-height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3);
+    border: 0.06rem solid var(--color-border);
+    border-radius: var(--radius-medium);
+    background-color: var(--color-tertiary);
+    color: var(--color-text-primary);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.category-card:hover {
+    background-color: #D7EAE6;
+    transform: translateY(-0.15rem);
+}
+
+.category-icon {
+    color: var(--color-secondary);
+    font-size: 1.3rem;
+}
+
+/* ==========================================================================
+   CADASTRO DE EVENTOS
+   ========================================================================== */
+
+.home-register {
+    width: 84%;
+    max-width: 72rem;
+    min-height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-5);
+    margin: 0 auto;
+    padding: var(--spacing-5) var(--spacing-8);
+    border-radius: var(--radius-large);
+    background: linear-gradient(
+        110deg,
+        var(--color-primary),
+        #168B78
+    );
+    color: var(--color-surface);
+}
+
+.home-register .home-label {
+    color: var(--color-tertiary);
+}
+
+.register-content h2 {
+    margin: 0 0 var(--spacing-2);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.register-content p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.75rem;
+}
+
+.register-button {
+    flex-shrink: 0;
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: var(--radius-small);
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.register-button:hover {
+    background-color: var(--color-tertiary);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 64rem) {
+
+    .events-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .home-banner {
+        padding: var(--spacing-8) 8%;
+    }
+
+}
+
+@media (max-width: 48rem) {
+
+    .home {
+        gap: var(--spacing-6);
+    }
+
+    .home-banner {
+        min-height: auto;
+        padding: var(--spacing-8) 6%;
+    }
+
+    .home-banner h1 {
+        font-size: 2.2rem;
+    }
+
+    .home-search {
+        flex-direction: column;
+        align-items: stretch;
+        padding: var(--spacing-2);
+    }
+
+    .home-search input,
+    .home-search select,
+    .home-search button {
+        width: 100%;
+        min-height: 2.8rem;
+    }
+
+    .home-section {
+        width: 90%;
+    }
+
+    .section-heading h2 {
+        font-size: 1.2rem;
+    }
+
+    .events-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .event-image {
+        height: 7rem;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .home-register {
+        width: 90%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-5);
+    }
+
+}
+
+@media (max-width: 30rem) {
+
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .event-image {
+        height: 9rem;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+    }
+
+    .register-content h2 {
+        font-size: 1.2rem;
+    }
+
+}
+
+
+/* ==========================================================================
+   EVENTOS - AGENDA CULTURAL DE CAMPO GRANDE
+   ========================================================================== */
+
+/* Estrutura principal */
+
+.eventos-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+}
+
+/* ==========================================================================
+   BANNER
+   ========================================================================== */
+
+.eventos-banner {
+    width: 100%;
+    min-height: 16rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(
+        110deg,
+        #E3F2EE,
+        #F4F8F6
+    );
+}
+
+.eventos-banner > span {
+    margin-bottom: 0.8rem;
+    color: var(--color-secondary);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+}
+
+.eventos-banner h1 {
+    margin: 0;
+    color: #193D3D;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+}
+
+.eventos-banner p {
+    margin: 0.5rem 0 0;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   CONTEÚDO DOS EVENTOS
+   ========================================================================== */
+
+.eventos-container {
+    width: 88%;
+    max-width: 78rem;
+    margin: 0 auto;
+    padding: 3rem 0;
+}
+
+/* ==========================================================================
+   FILTROS
+   ========================================================================== */
+
+.eventos-filtros {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr 1.05fr 1.05fr auto auto;
+    align-items: end;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.8rem;
+    background-color: var(--color-surface);
+}
+
+.filtro-campo {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.filtro-campo label {
+    color: var(--color-text-secondary);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.filtro-campo input,
+.filtro-campo select {
+    width: 100%;
+    height: 2.7rem;
+    padding: 0 0.75rem;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.4rem;
+    outline: none;
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    font-family: inherit;
+    font-size: 0.72rem;
+}
+
+.filtro-campo input:focus,
+.filtro-campo select:focus {
+    border-color: var(--color-secondary);
+}
+
+/* Botões dos filtros */
+
+.btn-filtrar,
+.btn-limpar {
+    height: 2.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    border-radius: 0.4rem;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-filtrar {
+    border: 0.06rem solid var(--color-secondary);
+    background-color: var(--color-secondary);
+    color: var(--color-surface);
+}
+
+.btn-filtrar:hover {
+    background-color: var(--color-primary);
+}
+
+.btn-limpar {
+    border: 0.06rem solid var(--color-border);
+    background-color: var(--color-surface);
+    color: var(--color-secondary);
+}
+
+.btn-limpar:hover {
+    background-color: var(--color-tertiary);
+}
+
+/* ==========================================================================
+   RESULTADOS
+   ========================================================================== */
+
+.eventos-resultado {
+    margin: 1.5rem 0 0.8rem;
+}
+
+.eventos-resultado p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.78rem;
+}
+
+/* ==========================================================================
+   GRID DE EVENTOS
+   ========================================================================== */
+
+.eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.evento-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.8rem;
+    background-color: var(--color-surface);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.evento-card:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.evento-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Área reservada para imagem */
+
+.evento-imagem {
+    position: relative;
+    width: 100%;
+    height: 10rem;
+    background-color: #5D9087;
+}
+
+.evento-categoria {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 2rem;
+    background-color: #E8F3F1;
+    color: var(--color-secondary);
+    font-size: 0.62rem;
+    font-weight: 700;
+}
+
+/* Informações */
+
+.evento-informacoes {
+    padding: 0.85rem;
+}
+
+.evento-informacoes h2 {
+    margin: 0 0 0.55rem;
+    color: var(--color-text-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.evento-informacoes p {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    margin: 0 0 0.35rem;
+    color: var(--color-text-secondary);
+    font-size: 0.68rem;
+    line-height: 1.4;
+}
+
+.evento-informacoes p span {
+    color: var(--color-secondary);
+}
+
+/* ==========================================================================
+   NENHUM EVENTO ENCONTRADO
+   ========================================================================== */
+
+.eventos-vazio {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+    text-align: center;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.8rem;
+    background-color: var(--color-surface);
+}
+
+.eventos-vazio > span {
+    color: var(--color-secondary);
+    font-size: 2.5rem;
+}
+
+.eventos-vazio h2 {
+    margin: 1rem 0 0.5rem;
+    color: var(--color-text-primary);
+    font-size: 1.2rem;
+}
+
+.eventos-vazio p {
+    max-width: 30rem;
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.eventos-vazio a {
+    margin-top: 0.7rem;
+    color: var(--color-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 64rem) {
+
+    .eventos-filtros {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .eventos-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 48rem) {
+
+    .eventos-banner {
+        min-height: 13rem;
+    }
+
+    .eventos-container {
+        width: 90%;
+        padding: 2rem 0;
+    }
+
+    .eventos-filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .eventos-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 30rem) {
+
+    .eventos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .evento-imagem {
+        height: 11rem;
+    }
+
+    .eventos-banner h1 {
+        font-size: 2rem;
+    }
+
+}
+/* fim eventos.php */
+
+
+/* ==========================================================================
+   DETALHES DO EVENTO - AGENDA CULTURAL
+   ========================================================================== */
+
+/* ==========================================================================
+   ESTRUTURA PRINCIPAL
+   ========================================================================== */
+
+.detalhe-page {
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+}
+
+/* ==========================================================================
+   BANNER DO EVENTO
+   ========================================================================== */
+
+.detalhe-banner {
+    position: relative;
+    min-height: 14rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem 7%;
+    background: linear-gradient(
+        180deg,
+        #5D9087 35%,
+        #194A43 100%
+    );
+    color: var(--color-surface);
+}
+
+.detalhe-banner-content {
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+.detalhe-banner-categoria {
+    display: block;
+    margin-bottom: 0.6rem;
+    color: #E8F3F1;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.detalhe-banner h1 {
+    margin: 0;
+    color: var(--color-surface);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* ==========================================================================
+   CONTEÚDO
+   ========================================================================== */
+
+.detalhe-container {
+    width: 82%;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 1.2rem 0 3rem;
+}
+
+.detalhe-voltar {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--color-secondary);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.detalhe-voltar:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   LAYOUT DAS COLUNAS
+   ========================================================================== */
+
+.detalhe-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(15rem, 0.95fr);
+    align-items: start;
+    gap: 1rem;
+}
+
+.detalhe-conteudo,
+.detalhe-sidebar {
+    min-width: 0;
+}
+
+.detalhe-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+
+.detalhe-card {
+    padding: 1rem;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.8rem;
+    background-color: var(--color-surface);
+}
+
+.detalhe-card h2 {
+    margin: 0 0 0.5rem;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.detalhe-categoria {
+    display: inline-block;
+    margin-bottom: 0.9rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 2rem;
+    background-color: var(--color-tertiary);
+    color: var(--color-secondary);
+    font-size: 0.62rem;
+    font-weight: 700;
+}
+
+.detalhe-descricao {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   GALERIA DE IMAGENS
+   ========================================================================== */
+
+.detalhe-galeria {
+    margin-top: 1.2rem;
+}
+
+.detalhe-galeria h2 {
+    margin-bottom: 0.7rem;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.4rem;
+}
+
+.galeria-item {
+    min-width: 0;
+    height: 5.8rem;
+    border-radius: 0.5rem;
+    background-color: #5D9087;
+}
+
+/* ==========================================================================
+   CARD DE INGRESSOS
+   ========================================================================== */
+
+.detalhe-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-secondary);
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+
+.ingresso-card h2 {
+    margin-bottom: 0.5rem;
+}
+
+.ingresso-card p {
+    margin: 0 0 0.8rem;
+    color: var(--color-text-secondary);
+    font-size: 0.7rem;
+    line-height: 1.5;
+}
+
+.btn-ingresso {
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    background-color: var(--color-secondary);
+    color: var(--color-surface);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-ingresso:hover {
+    background-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   CARD QUANDO E ONDE
+   ========================================================================== */
+
+.local-card h2 {
+    margin-bottom: 0.8rem;
+}
+
+.detalhe-informacao {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+}
+
+.detalhe-icone {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+}
+
+.detalhe-informacao p {
+    margin: 0 0 0.2rem;
+    color: var(--color-text-secondary);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.detalhe-informacao small {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 0.65rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   MAPA ILUSTRATIVO
+   ========================================================================== */
+
+.detalhe-mapa {
+    min-height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-top: 0.4rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(
+        135deg,
+        #DDEFE9,
+        #F1F5E9
+    );
+    color: var(--color-secondary);
+}
+
+.detalhe-mapa span {
+    font-size: 1.2rem;
+}
+
+.detalhe-mapa p {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.mapa-legenda {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--color-text-secondary);
+    font-size: 0.6rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   EVENTO NÃO ENCONTRADO
+   ========================================================================== */
+
+.detalhe-nao-encontrado {
+    min-height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.detalhe-nao-encontrado h1 {
+    color: var(--color-text-primary);
+    font-size: 1.5rem;
+}
+
+.detalhe-nao-encontrado p {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+}
+
+.detalhe-nao-encontrado a {
+    margin-top: 0.8rem;
+    color: var(--color-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+
+    .detalhe-banner {
+        min-height: 12rem;
+        padding: 2rem 5%;
+    }
+
+    .detalhe-container {
+        width: 90%;
+    }
+
+    .detalhe-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .detalhe-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+    }
+
+}
+
+@media (max-width: 32rem) {
+
+    .detalhe-banner {
+        min-height: 10rem;
+    }
+
+    .detalhe-banner h1 {
+        font-size: 1.7rem;
+    }
+
+    .detalhe-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .galeria-item {
+        height: 9rem;
+    }
+
+}
+
+/* fim detalhe.php */
+
+
+/* ==========================================================================
+   CATEGORIAS - AGENDA CULTURAL DE CAMPO GRANDE
+   ========================================================================== */
+
+/* ==========================================================================
+   ESTRUTURA PRINCIPAL
+   ========================================================================== */
+
+.categorias-page {
+    width: 100%;
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+}
+
+/* ==========================================================================
+   BANNER
+   ========================================================================== */
+
+.categorias-banner {
+    width: 100%;
+    min-height: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(
+        110deg,
+        #E3F2EE,
+        #F4F8F6
+    );
+}
+
+.categorias-label {
+    margin-bottom: 0.65rem;
+    color: var(--color-secondary);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.03rem;
+}
+
+.categorias-banner h1 {
+    margin: 0;
+    color: #193D3D;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-weight: 700;
+}
+
+.categorias-banner p {
+    margin: 0.5rem 0 0;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   CONTAINER DAS CATEGORIAS
+   ========================================================================== */
+
+.categorias-container {
+    width: 86%;
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2.5rem 0 3rem;
+}
+
+/* ==========================================================================
+   GRID DE CATEGORIAS
+   ========================================================================== */
+
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+/* ==========================================================================
+   CARD DE CATEGORIA
+   ========================================================================== */
+
+.categoria-card {
+    min-width: 0;
+    min-height: 7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 0.5rem;
+    border: 0.06rem solid var(--color-border);
+    border-radius: 0.65rem;
+    background-color: #EAF5F2;
+    text-align: center;
+    text-decoration: none;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.categoria-card:hover {
+    transform: translateY(-0.2rem);
+    background-color: #DDEFEA;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.06);
+}
+
+/* Ícone */
+
+.categoria-icone {
+    color: var(--color-secondary);
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+/* Nome */
+
+.categoria-card h2 {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+/* Descrição */
+
+.categoria-card p {
+    max-width: 9rem;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.58rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 64rem) {
+
+    .categorias-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.8rem;
+    }
+
+}
+
+@media (max-width: 48rem) {
+
+    .categorias-banner {
+        min-height: 11rem;
+    }
+
+    .categorias-container {
+        width: 90%;
+        padding: 2rem 0;
+    }
+
+    .categorias-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 30rem) {
+
+    .categorias-banner h1 {
+        font-size: 1.8rem;
+    }
+
+    .categorias-banner p {
+        max-width: 18rem;
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .categoria-card {
+        min-height: 7.5rem;
+    }
+
+}
+/* fim categoria.php */
+
+/* ==========================================================================
+   SOBRE - AGENDA CULTURAL DE CAMPO GRANDE
+   ========================================================================== */
+
+/* ==========================================================================
+   ESTRUTURA PRINCIPAL
+   ========================================================================== */
+
+.sobre-page {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+}
+
+/* ==========================================================================
+   BANNER PRINCIPAL
+   ========================================================================== */
+
+.sobre-banner {
+    width: 100%;
+    min-height: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(
+        110deg,
+        #E3F2EE,
+        #F4F8F6
+    );
+}
+
+.sobre-label {
+    display: block;
+    margin-bottom: 0.6rem;
+    color: var(--color-secondary);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.03rem;
+}
+
+.sobre-banner h1 {
+    margin: 0;
+    color: #193D3D;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-weight: 700;
+}
+
+.sobre-banner p {
+    margin: 0.5rem 0 0;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   CONTEÚDO SOBRE
+   ========================================================================== */
+
+.sobre-container {
+    width: 86%;
+    max-width: 72rem;
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(15rem, 1fr);
+    align-items: center;
+    gap: 3rem;
+    margin: 0 auto;
+    padding: 2.5rem 0;
+}
+
+/* ==========================================================================
+   TEXTO DE APRESENTAÇÃO
+   ========================================================================== */
+
+.sobre-conteudo {
+    min-width: 0;
+}
+
+.sobre-conteudo .sobre-label {
+    margin-bottom: 0.6rem;
+}
+
+.sobre-conteudo h2 {
+    margin: 0 0 0.7rem;
+    color: var(--color-text-primary);
+    font-size: 1.55rem;
+    font-weight: 600;
+}
+
+.sobre-conteudo p {
+    margin: 0 0 0.7rem;
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    line-height: 1.7;
+}
+
+/* Botão */
+
+.sobre-button {
+    min-height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    background-color: var(--color-secondary);
+    color: var(--color-surface);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.sobre-button:hover {
+    background-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   CARD DESTAQUE
+   ========================================================================== */
+
+.sobre-destaque {
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    background-color: #E5F2EE;
+}
+
+.sobre-destaque-item h3 {
+    margin: 0 0 0.3rem;
+    color: var(--color-text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.sobre-destaque-item p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+}
+
+.sobre-divisor {
+    width: 100%;
+    height: 0.06rem;
+    margin: 1.2rem 0;
+    background-color: #D3E5DF;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+
+    .sobre-banner {
+        min-height: 11rem;
+    }
+
+    .sobre-container {
+        width: 90%;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem 0;
+    }
+
+    .sobre-conteudo h2 {
+        font-size: 1.35rem;
+    }
+
+}
+
+@media (max-width: 30rem) {
+
+    .sobre-banner h1 {
+        font-size: 1.8rem;
+    }
+
+    .sobre-banner p {
+        max-width: 20rem;
+        line-height: 1.5;
+    }
+
+    .sobre-destaque {
+        padding: 1.2rem;
+    }
+
+}
+
+/* ==========================================================================
+   ÁREA ADMINISTRATIVA
+   ========================================================================== */
+.admin-main {
+  min-height: 100vh;
+  padding: var(--spacing-6) var(--spacing-7);
+}
+
+/* Topo da página */
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-5);
+}
+
+.admin-eyebrow {
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.admin-title {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-extra-large);
+  color: var(--color-text-primary);
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1) var(--spacing-3);
+  border: var(--card-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-secondary);
+}
+
+.admin-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-circle);
+  background: var(--color-secondary);
+}
+
+/* Cards */
+.admin-card {
+  background: var(--card-background);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+  margin-bottom: var(--spacing-5);
+}
+
+.admin-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.admin-card__title {
+  font-size: var(--font-medium);
+  color: var(--color-text-primary);
+}
+
+.admin-card__subtitle {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+}
+
+/* Botões do admin (usam .btn-primary do style.css como base) */
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--button-radius);
+  font-size: var(--font-small);
+  font-weight: var(--button-font-weight);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.admin-btn--outline {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  border: var(--card-border);
+  cursor: pointer;
+  transition: var(--button-transition);
+}
+
+.admin-btn--outline:hover {
+  background: var(--table-row-hover);
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+}
+
+.admin-link {
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.admin-link:hover {
+  text-decoration: underline;
+}
+
+/* Cards de resumo */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-5);
+}
+
+.admin-stat {
+  padding: var(--spacing-4);
+  border: var(--card-border);
+  border-radius: var(--radius-large);
+  background: var(--color-surface);
+}
+
+.admin-stat__label {
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+.admin-stat__value {
+  margin: var(--spacing-1) 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-extra-large);
+  font-weight: var(--font-weight-bold);
+}
+
+.admin-stat__detail {
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+/* Tabelas */
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-small);
+}
+
+.admin-table th {
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--table-header-bg);
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-medium);
+  text-align: left;
+  color: var(--color-text-secondary);
+}
+
+.admin-table td {
+  padding: var(--spacing-3) var(--spacing-4);
+  border-bottom: var(--table-border);
+}
+
+.admin-table tbody tr:hover {
+  background: var(--table-row-hover);
+}
+
+.admin-table td:first-child {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Tags de status */
+.status-badge {
+  display: inline-block;
+  padding: 2px var(--spacing-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-medium);
+}
+
+.status-badge--approved { background: var(--status-approved-bg); color: #1E9E36; }
+.status-badge--pending  { background: var(--status-pending-bg);  color: #B7791F; }
+.status-badge--rejected { background: var(--status-rejected-bg); color: #C53030; }
+
+/* Busca */
+.admin-search {
+  width: 220px;
+  height: 36px;
+  padding: 0 var(--spacing-3);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--input-background);
+  font-size: var(--font-small);
+}
+
+.admin-search:focus {
+  outline: none;
+  border: var(--input-border-focus);
+}
+
+/* Grade de categorias */
+.admin-categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: var(--table-border);
+}
+
+.admin-categories__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4);
+  border-bottom: var(--table-border);
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (max-width: 900px) {
+  .admin-stats { grid-template-columns: repeat(2, 1fr); }
+  .admin-categories { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   ÁREA DO CURADOR
+   ========================================================================== */
+.evento-lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.evento-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-3);
+  border: var(--card-border);
+  border-radius: var(--radius-large);
+  background: var(--color-surface);
+  transition: opacity var(--transition-default), transform var(--transition-default);
+}
+
+.evento-item.is-saindo {
+  opacity: 0;
+  transform: translateX(16px);
+}
+
+.evento-item__thumb {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  border-radius: var(--radius-medium);
+  background: var(--color-gradient);
+}
+
+.evento-item__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.evento-item__titulo {
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-bold);
+}
+
+.evento-item__meta {
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+.evento-item__motivo {
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+.evento-item__info .status-badge {
+  align-self: flex-start;
+}
+
+.evento-item__acoes {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+/* Perfil */
+.perfil-card {
+  max-width: 380px;
+}
+
+.perfil-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-3);
+  border-radius: var(--radius-circle);
+  background: var(--color-tertiary);
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.form-campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  margin-top: var(--spacing-4);
+}
+
+.form-campo label {
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-medium);
+}
+
+.form-campo input {
+  height: 40px;
+  padding: 0 var(--spacing-3);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--input-background);
+  font-size: var(--font-small);
+}
+
+.form-campo input:focus {
+  outline: none;
+  border: var(--input-border-focus);
+}
+
+@media (max-width: 700px) {
+  .evento-item { flex-wrap: wrap; }
+  .evento-item__acoes { width: 100%; }
+}
+
+/* ==========================================================================
+   ÁREA DO ORGANIZADOR
+   ========================================================================== */
+
+/* Aviso informativo */
+.aviso-box {
+  margin-top: var(--spacing-4);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-large);
+  background: var(--color-tertiary);
+}
+
+.aviso-box__titulo {
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-bold);
+}
+
+.aviso-box__texto {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+/* Formulário em duas colunas */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 var(--spacing-4);
+}
+
+.form-campo--full {
+  grid-column: 1 / -1;
+}
+
+.form-campo select,
+.form-campo textarea {
+  padding: 0 var(--spacing-3);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--input-background);
+  font-family: var(--font-body);
+  font-size: var(--font-small);
+}
+
+.form-campo select {
+  height: 40px;
+}
+
+.form-campo textarea {
+  min-height: 100px;
+  padding: var(--spacing-3);
+  resize: vertical;
+}
+
+.form-campo select:focus,
+.form-campo textarea:focus {
+  outline: none;
+  border: var(--input-border-focus);
+}
+
+.form-campo input:disabled {
+  background: var(--color-background);
+  cursor: not-allowed;
+}
+
+.form-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-5);
+}
+
+.form-rodape small {
+  font-size: var(--font-extra-small);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 700px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+/* editar curador */
+
+/* ===== Modal base ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
+  background: color-mix(in srgb, var(--color-primary) 75%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-default), visibility var(--transition-default);
+}
+
+.modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: var(--card-padding);
+  border-radius: var(--card-radius);
+  background: var(--color-surface);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(12px) scale(0.98);
+  transition: transform var(--transition-default);
+}
+
+.modal.is-open .modal__box {
+  transform: translateY(0) scale(1);
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--spacing-3);
+  right: var(--spacing-4);
+  border: none;
+  background: none;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.modal__title {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-large);
+}
+
+.modal__label {
+  display: block;
+  margin: var(--spacing-4) 0 var(--spacing-1);
+  font-size: var(--font-extra-small);
+  font-weight: var(--font-weight-medium);
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-4);
+}
+
+/* ===== Campos do modal editar ===== */
+.modal__input {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  font-family: var(--font-body);
+  font-size: var(--font-small);
+  background: var(--color-surface);
+}
+
+.modal__input:focus {
+  outline: none;
+  border: var(--input-border-focus);
+}
+
+.modal__select-wrap {
+  position: relative;
+}
+
+.modal__status-dot {
+  position: absolute;
+  top: 50%;
+  left: var(--spacing-3);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22a55b;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.modal__select-wrap[data-status="inativo"] .modal__status-dot {
+  background: var(--color-text-secondary);
+}
+
+.modal__select {
+  width: 100%;
+  padding: var(--spacing-3) 32px var(--spacing-3) calc(var(--spacing-3) + 20px);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  font-family: var(--font-body);
+  font-size: var(--font-small);
+  background-color: var(--color-surface);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-3) center;
+  appearance: none;
+  cursor: pointer;
+}
+
+.modal__select:focus {
+  outline: none;
+  border: var(--input-border-focus);
+}
